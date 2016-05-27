@@ -4,7 +4,9 @@
     <gc-input placeholder="{opts.placeholder}" name="input" on-valuechange="{updateList}"></gc-input>
     <ul id="search-results" class="list hidden"></ul>
   <script type="babel">
-  
+    //riot.observable(this);
+    
+    
     // Make sure there's a list to be used
     this.on('before-mount', () => {
       if (!opts.list) {
@@ -106,6 +108,10 @@
       } else if (e.toElement.classList.contains('tag')) {
         this.deleteTag(e.toElement);
       }
+    }
+    
+    this.testeroo = () => {
+      console.log('testeroo!');
     }
     
     this.addTag = (value) => {

@@ -21,3 +21,4 @@ this.buttonClicked = (e) => {
 
 ### TODO
 * ???
+* Consider reimplementing as div
