@@ -1,0 +1,76 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald|Open+Sans);
+gc-input {
+  font-family: "Open Sans", sans-serif;
+  padding: 8px 0px;
+  position: relative;
+  margin: auto; }
+  gc-input ::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4); }
+  gc-input :-moz-placeholder {
+    color: rgba(0, 0, 0, 0.4); }
+  gc-input ::-moz-placeholder {
+    color: rgba(0, 0, 0, 0.4); }
+  gc-input :-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4); }
+  gc-input .input-content {
+    font-size: .9rem;
+    color: #333;
+    position: relative;
+    /** TODO: IMPLEMENT LABEL **/
+    /** INPUT **/ }
+    gc-input .input-content label {
+      font-family: inherit;
+      color: #333;
+      padding-left: 2.8%;
+      text-align: center; }
+    gc-input .input-content input {
+      display: block;
+      outline: 0;
+      -webkit-appearance: none;
+      -ms-appearance: none;
+      -moz-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+      border: none;
+      border-bottom: 1px solid rgba(103, 131, 250, 0.8);
+      color: #6783FA;
+      width: 95%;
+      padding: 10px 15px;
+      margin: 0 auto 10px auto;
+      text-align: center;
+      font-size: .9rem;
+      -webkit-transition-duration: .2s;
+      -ms-transition-duration: .2s;
+      -moz-transition-duration: .2s;
+      -o-transition-duration: .2s;
+      transition-duration: .2s; }
+      gc-input .input-content input:focus {
+        width: 100%; }
+      gc-input .input-content input:disabled {
+        background-color: rgba(51, 51, 51, 0.2);
+        cursor: not-allowed; }
+      gc-input .input-content input.error {
+        border-right: solid 2px #FF0000; }
+    gc-input .input-content input[type=number]::-webkit-inner-spin-button,
+    gc-input .input-content input[type=number]::-webkit-outer-spin-button,
+    gc-input .input-content input[type=date]::-webkit-inner-spin-button,
+    gc-input .input-content input[type=date]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -ms-appearance: none;
+      -moz-appearance: none;
+      -o-appearance: none;
+      appearance: none; }
+    gc-input .input-content input[type="date"]:before {
+      content: attr(placeholder) !important;
+      color: #FFF; }
+    gc-input .input-content input[type="date"]:focus:before,
+    gc-input .input-content input[type="date"]:valid:before {
+      content: ""; }
+  gc-input .error-text {
+    width: 100%;
+    font-size: .6rem;
+    color: #FF0000;
+    text-align: right;
+    margin-top: -5px; }
+
+/*# sourceMappingURL=gc-input.css.map */

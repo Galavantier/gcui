@@ -1,0 +1,75 @@
+@import "../variables.scss";
+
+gc-input {
+  @include placeholder { 
+    color: rgba($black, 0.4);
+  }
+  
+  font-family: $open-sans;
+  padding: 8px 0px;
+  position: relative;
+  margin: auto;
+  
+  .input-content {
+    font-size: .9rem;
+    color: $dark-grey;
+    position: relative;
+    
+    /** TODO: IMPLEMENT LABEL **/
+    label {
+      font-family: inherit;
+      color: $dark-grey;
+      padding-left: 2.8%;
+      text-align: center;
+    }
+    
+    /** INPUT **/
+    input {
+      display: block;
+      outline: 0;
+      @include vendor-prefix(appearance, "none");
+      border: none;
+      border-bottom: 1px solid rgba($gv-blue, 0.8);
+      color: $gv-blue;
+      width: 95%;
+      padding: 10px 15px;
+      margin: 0 auto 10px auto;
+      text-align: center;
+      font-size: .9rem;
+      @include vendor-prefix(transition-duration, ".2s");
+      &:focus {
+        width: 100%;
+      }
+      &:disabled {
+        background-color:rgba($dark-grey, 0.2);
+        cursor: not-allowed;
+      }
+      &.error {
+        border-right: solid 2px $red;
+      }
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=date]::-webkit-inner-spin-button, 
+    input[type=date]::-webkit-outer-spin-button,{ 
+      @include vendor-prefix(appearance, "none");
+    }
+    
+    input[type="date"]:before {
+      content: attr(placeholder) !important;
+      color: $white;
+    }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }
+  }
+  
+  .error-text {
+    width: 100%;
+    font-size: .6rem;
+    color: $red;
+    text-align: right;
+    margin-top: -5px;
+  } 
+}

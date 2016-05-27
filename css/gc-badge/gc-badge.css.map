@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACQ,oEAA4D;ACClE,iBAAS;EACP,OAAO,EAAE,MAAM;EACf,QAAQ,EAAE,QAAQ;EAClB,wBAAO;IACL,UAAU,EAAE,MAAM;IAClB,QAAQ,EAAE,QAAQ;IAClB,MAAM,EAAE,KAAK;IACb,KAAK,EAAE,KAAK;IACZ,MAAM,EAAE,IAAI;IACZ,WAAW,EDRL,uBAAuB;ICS7B,SAAS,EAAE,MAAM;IACjB,WAAW,EAAE,MAAM;IACnB,aAAa,EAAE,IAAI;IACnB,gBAAgB,ED0ChB,OAAO;ICzCP,KAAK,ED+CH,IAAI;IC9CN,OAAO,EAAE,OAAO",
+"sources": ["../../tags/gc-ui/variables.scss","../../tags/gc-ui/gc-badge/gc-badge.scss"],
+"names": [],
+"file": "gc-badge.css"
+}

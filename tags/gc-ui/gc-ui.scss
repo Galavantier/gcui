@@ -1,0 +1,67 @@
+@import "gc-input/gc-input";
+@import "gc-button/gc-button";
+@import "gc-card/gc-card";
+@import "gc-inputlist/gc-inputlist";
+@import "gc-listview/gc-listview";
+@import "gc-pmlist/gc-pmlist";
+@import "gc-modal/gc-modal";
+@import "gc-badge/gc-badge";
+@import "gc-nav/gc-nav";
+
+
+/** TESTING ONLY DELETE THIS LATER **/
+body {
+  background: $background-white;
+  -webkit-font-smoothing: antialiased;
+  font-family: $oswald;
+  line-height: 1.4;
+  color: $dark-grey;
+  margin: 0px;
+}
+.flex-container {
+  @include vendor-prefix(display, "flex");
+  @include vendor-prefix(flex-flow, "row wrap");
+}
+.form-container {
+  background-color: $white;
+  width: 100%;
+  padding: 8px 0px;
+}
+
+.search-results {
+  @include vendor-prefix(display, "flex");
+  @include vendor-prefix(flex-flow, "row wrap");
+  margin-top: 5px;
+  margin-left: 5px;
+  justify-content: center;
+  &:last-child {
+    justify-content: left;
+  }
+}
+
+.dates {
+  max-width: 300px;
+}
+
+.button {
+  margin-top: 28px;
+  margin-left: 8px;
+  max-width: 135px;
+}
+
+.item {
+    @include vendor-prefix(flex-grow, "1");
+}
+
+.pika-single {
+  background-color: $white;
+  border: 1px solid $gv-blue;
+  padding: 2px;
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.pika-select {
+  float: right;
+}

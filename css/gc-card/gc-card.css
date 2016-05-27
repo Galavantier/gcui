@@ -1,0 +1,110 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald|Open+Sans);
+gc-card .card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  margin: 5px 5px;
+  min-width: 300px;
+  min-height: 350px;
+  -webkit-display: border-box;
+  -ms-display: border-box;
+  -moz-display: border-box;
+  -o-display: border-box;
+  display: border-box; }
+  gc-card .card.flip {
+    transform: rotateY(180deg);
+    transition: transform 0.5s; }
+  gc-card .card .face {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    backface-visibility: hidden;
+    transform: translateZ(0.1px); }
+  gc-card .card .back {
+    transform: rotateY(180deg); }
+  gc-card .card.selected {
+    border: 2.5px solid #6783FA; }
+  gc-card .card .front {
+    color: #333;
+    background-color: #FFF; }
+    gc-card .card .front a:before {
+      content: "Details"; }
+    gc-card .card .front hr {
+      background-color: #333; }
+  gc-card .card .card:first-child {
+    margin-top: 8px; }
+  gc-card .card .back {
+    background-color: #333;
+    color: #FFF; }
+    gc-card .card .back a:before {
+      content: "Close"; }
+    gc-card .card .back hr {
+      background-color: #FFF; }
+gc-card .flex-container {
+  -webkit-display: flex;
+  -ms-display: flex;
+  -moz-display: flex;
+  -o-display: flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -o-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 5px; }
+gc-card .image {
+  padding: 5px;
+  text-align: center; }
+  gc-card .image img {
+    max-height: 96px;
+    width: 100%; }
+gc-card .card-title h2 {
+  margin: 0; }
+gc-card .card-title .card-venue {
+  font-weight: lighter;
+  font-family: inherit; }
+gc-card .card-title .card-date {
+  font-family: "Open Sans", sans-serif;
+  font-size: .7rem;
+  font-weight: bold;
+  margin-top: 5px; }
+gc-card .label {
+  min-width: 50%;
+  text-align: left; }
+gc-card .value {
+  min-width: 50%;
+  text-align: right; }
+gc-card .label, gc-card .value {
+  font-family: "Open Sans", sans-serif;
+  font-size: .8rem; }
+gc-card .card-pricing {
+  padding: 5px;
+  text-align: center; }
+  gc-card .card-pricing hr {
+    height: 3px;
+    border: none; }
+gc-card .details {
+  text-align: right;
+  right: 0px; }
+  gc-card .details a {
+    font-family: "Open Sans", sans-serif;
+    font-size: .8rem;
+    color: #6783FA;
+    text-decoration: none; }
+gc-card .breakdown {
+  min-height: 145px; }
+gc-card .item {
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -o-flex-grow: 1;
+  flex-grow: 1; }
+gc-card .button {
+  position: absolute;
+  bottom: 5;
+  width: 80%;
+  left: 25%; }
+
+/*# sourceMappingURL=gc-card.css.map */

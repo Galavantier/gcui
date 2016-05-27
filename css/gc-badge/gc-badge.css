@@ -1,0 +1,19 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald|Open+Sans);
+gc-badge .content {
+  display: inline;
+  position: relative; }
+  gc-badge .content .badge {
+    text-align: center;
+    position: absolute;
+    bottom: -12px;
+    right: -15px;
+    height: 16px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.6rem;
+    line-height: 1.0rem;
+    border-radius: 10px;
+    background-color: #FF0000;
+    color: #FFF;
+    padding: 1px 5px; }
+
+/*# sourceMappingURL=gc-badge.css.map */

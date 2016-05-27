@@ -1,0 +1,121 @@
+@import "../variables.scss";
+
+gc-card {
+  $card-padding: 5px;
+  .card {
+    @include flip();
+    margin: 5px 5px;
+    min-width: 300px;
+    min-height: 350px;
+    @include vendor-prefix(display, "border-box");
+    &.selected {
+      border: 2.5px solid $gv-blue;
+    }
+    .front {
+      color: $dark-grey;
+      background-color: $white;
+      a {
+        &:before {
+          content: "Details";
+        }
+      }
+      hr {
+        background-color: $dark-grey;
+      }
+    }
+    .card:first-child {
+        margin-top: 8px; 
+      }
+    .back {
+      background-color: $dark-grey;
+      color: $white;
+      a {
+        &:before {
+          content: "Close";
+        }
+      }
+      hr {
+        background-color: $white;
+      }
+    }
+  }
+  
+  .flex-container {
+    @include vendor-prefix(display, "flex");
+    @include vendor-prefix(flex-flow, "row wrap");
+    padding: $card-padding;
+  }
+  
+  .image {
+    padding: $card-padding;
+    text-align: center;
+    img {
+      max-height: 96px;
+      width: 100%;
+    }
+  }
+  
+  .card-title {
+    h2 {
+      margin: 0;
+    }
+    .card-venue {
+      font-weight: lighter;
+      font-family: inherit;
+    }
+    .card-date {
+      font-family: $open-sans;
+      font-size: .7rem;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+  }
+  
+  .label {
+    min-width: 50%;
+    text-align: left;
+  }
+  .value {
+    min-width: 50%;
+    text-align: right;
+  }
+  .label, .value {
+    font-family: $open-sans;
+    font-size: .8rem;
+  }
+
+  
+  .card-pricing {
+    padding: $card-padding;
+    text-align: center;
+    hr {
+      height: 3px;
+      border: none;
+    }
+  }
+  
+  .details {
+    text-align: right;
+    right: 0px;
+    a {
+      font-family: $open-sans;
+      font-size: .8rem;
+      color: $gv-blue;
+      text-decoration: none;
+    }
+  }
+  
+  .breakdown {
+    min-height: 145px;
+  }
+  
+  .item {
+    @include vendor-prefix(flex-grow, "1");
+  }
+  .button {
+    position: absolute;
+    bottom: 5;
+    width: 80%;
+    left: 25%;
+  }
+}

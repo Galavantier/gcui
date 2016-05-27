@@ -1,0 +1,28 @@
+@import "../variables.scss";
+
+gc-button {
+  button {
+    @include vendor-prefix(appearance, "none");
+    outline: 0;
+    background-color: rgba($gv-blue, 0.8);
+    border: 0;
+    padding: 10px 15px;
+    color: $white;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    font-family: $open-sans;
+    font-size: .9rem;
+    @include vendor-prefix(transition-duration, "0.2s");
+    &:hover {
+      background-color: $darker-blue;
+    }
+    &:disabled {
+      background-color: rgba($dark-grey, 0.2);
+      cursor: not-allowed;
+    }
+    svg {
+      color: $white;
+    }
+  }
+}

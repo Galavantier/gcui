@@ -1,0 +1,40 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald|Open+Sans);
+gc-nav {
+  display: block;
+  margin-bottom: 48px;
+  font-family: "Open Sans", sans-serif; }
+  gc-nav header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10; }
+  gc-nav .navbar {
+    position: relative;
+    height: 48px;
+    width: 100%;
+    transition: 0.5s ease;
+    background-color: #FFF; }
+    gc-nav .navbar .nav {
+      margin: 0;
+      padding: 0;
+      display: inline-block; }
+      gc-nav .navbar .nav li {
+        list-style: none;
+        display: inline-block;
+        font-size: 1rem;
+        padding: 5px;
+        transition: 0.5s ease;
+        color: #333; }
+        gc-nav .navbar .nav li a {
+          text-decoration: none;
+          color: inherit; }
+    gc-nav .navbar.scrolled {
+      transition: 0.5s ease;
+      height: 50px;
+      background-color: rgba(51, 51, 51, 0.8);
+      border-bottom: solid 1px #FFF; }
+      gc-nav .navbar.scrolled .nav li {
+        transition: 0.5s ease;
+        color: #FFF; }
+
+/*# sourceMappingURL=gc-nav.css.map */

@@ -1,0 +1,61 @@
+@import "../variables.scss";
+
+
+gc-inputlist {
+  .tags {
+    margin: 1px 1px;
+  }
+  .tags .tag {
+    margin-top: 2px;
+    font-family: $open-sans;
+    font-size: 0.9rem;
+    color: $white;
+    background-color: rgba($gv-blue, 0.8);
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-right: 2px;
+    cursor: pointer;
+    z-index: 4;
+    display: inline-block;
+  }
+  .tags .tag.highlight {
+    background-color: rgba($red, 0.8);
+  }
+  
+  .tags:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .term-list {
+  list-style: none inside;
+  width: 80%;
+  margin: 0 auto 2em;
+  text-align: left;
+  color: $dark-grey;
+  background: $white;
+  border: 1px solid #ddd;
+  font-weight: 400;
+  padding-left: 0px;
+  }
+  .term-list li {
+    padding: 0.5em;
+    border-bottom: 1px solid #eee;
+    list-style: none inside;
+    font-family: $open-sans;
+    font-size: 0.7rem;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: rgba($black, 0.1);
+    }
+  }
+  .term-list strong {
+    color: #444;
+    font-weight: 700;
+  }
+
+  .hidden {
+    display: none;
+  }
+}

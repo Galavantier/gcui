@@ -1,0 +1,3 @@
+http-server
+riot -w --type babel tags/ src/app.js
+sass --watch tags/gc-ui/:css/
