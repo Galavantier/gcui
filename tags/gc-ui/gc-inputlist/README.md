@@ -1,6 +1,7 @@
 # gc-inputlist
 gc-inputlist is like gc-input, but with the added option of having a list and multiselect.  Since many of gc-input's features
-were needed, it actually invokes gc-input.
+were needed, it actually invokes gc-input.  gc-inputlist has a function called getVal that allows you to get the value of the
+multiselect tags if there are any.  otherwise it will return what the input has.
 
 ### Opts
 * almost everything that gc-input takes (to be added as need later on)

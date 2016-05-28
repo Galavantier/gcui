@@ -1,13 +1,13 @@
 <demo-form>
   <div class="form-container">
     <div class="dates">
-      <gc-input name="startdate" placeholder="Start Date" pikaday="true" label="test label" on-focuschange="{getValue}"></gc-input>
+      <gc-input name="startdate" placeholder="Start Date" pikaday="true" label="Start Date" on-focuschange="{getValue}"></gc-input>
       <gc-input name="enddate" on-focuschange="{error}"
       on-valuechange="{error}"></gc-input>
     </div>
     <div class="flex-container">
       <div class="item">
-        <gc-inputlist placeholder="test" list="{this.dummyData}" key="venue" multiselect="true"></gc-inputlist>
+        <gc-inputlist name="testeroo" placeholder="test" list="{this.dummyData}" key="venue" multiselect="true"></gc-inputlist>
       </div>
       <div class="item">
         <gc-input name="type" on-valuechange="{error}" placeholder="Product Type"></gc-input>
@@ -26,7 +26,6 @@
   </div>
   <gc-modal name="mainModal" title="Test">Oh, hello there</gc-modal>
   
-  
   <script type="babel">
     this.cityArray = ['Las Vegas', 'Los Angeles', 'Miami', 'New York', 'San Diego', 'Scottsdale'];
     this.dummyData = [
@@ -41,7 +40,6 @@
       {"venue":"Scorpion Club", "city":"Scottsdale", "capacity":"6", "table": "Back Wall Table", "total": "2891.00", "base": "2000.00", "gratuity": "400.00 (20%)"}
     ];
     
-    
     this.getValue = (value) => {
       console.log(value);
     }
@@ -55,10 +53,15 @@
     }
     
     this.onSearchPmus = (e) => {
-      console.log(e);
-      this.tags.mainModal.update ({
-        showModal : true
-      });
+      let test = this.tags.testeroo.getVal.call();
+      if (test == 'show modal') {
+        this.tags.mainModal.update ({
+          showModal : true
+        });
+      }
     }
+    
+  
+
   </script>
 </demo-form>

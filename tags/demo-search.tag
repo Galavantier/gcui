@@ -2,9 +2,10 @@
     <gc-nav><li>test</li><li>test2</li><li><a href="#">link</a></li><li><gc-badge base="Shopping Cart" badge="42" /></li>
     </gc-nav>
     <demo-form></demo-form>
-    <div><gc-loader height="72" width="64" speed="1.2" type="circle"></gc-loader></div>
+    <div><gc-loader height="172" width="164" speed=".9" type="bar"></gc-loader></div>
     <demo-results callback={tagCallback}></demo-results>
   <script type="babel">
+  //  riot.mixin('testObservable', new TestObservable());
     this.tagCallback = (resultsTag) => {
       
       let request = new XMLHttpRequest();

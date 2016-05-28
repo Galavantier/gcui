@@ -4,7 +4,6 @@
     <gc-input placeholder="{opts.placeholder}" name="input" on-valuechange="{updateList}"></gc-input>
     <ul id="search-results" class="list hidden"></ul>
   <script type="babel">
-    //riot.observable(this);
     
     
     // Make sure there's a list to be used
@@ -110,8 +109,18 @@
       }
     }
     
-    this.testeroo = () => {
-      console.log('testeroo!');
+    this.getVal = () => {
+      let tagArray = [];
+      document.querySelectorAll('.tags .tag').forEach(div => {
+        tagArray.push(div.innerText);
+      });
+      
+      if (tagArray.length > 0) {
+        return tagArray;
+      } else {
+        return (this.tags.input.value);
+      }
+
     }
     
     this.addTag = (value) => {

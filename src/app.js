@@ -1,4 +1,4 @@
-riot.tag2('demo-form', '<div class="form-container"> <div class="dates"> <gc-input name="startdate" placeholder="Start Date" pikaday="true" label="test label" on-focuschange="{getValue}"></gc-input> <gc-input name="enddate" on-focuschange="{error}" on-valuechange="{error}"></gc-input> </div> <div class="flex-container"> <div class="item"> <gc-inputlist placeholder="test" list="{this.dummyData}" key="venue" multiselect="true"></gc-inputlist> </div> <div class="item"> <gc-input name="type" on-valuechange="{error}" placeholder="Product Type"></gc-input> </div> <div class="item"> <gc-input name="venue" on-valuechange="{updateName}" on-focuschange="{updateName}" placeholder="Venue"></gc-input> </div> <div class="item"> <gc-input name="title" placeholder="Product Title"></gc-input> </div> </div> <div class="button"> <gc-button name="button" type="submit" text="Search" on-buttonclick="{onSearchPmus}"></gc-button> </div> </div> <gc-modal name="mainModal" title="Test">Oh, hello there</gc-modal>', '', '', function(opts) {
+riot.tag2('demo-form', '<div class="form-container"> <div class="dates"> <gc-input name="startdate" placeholder="Start Date" pikaday="true" label="Start Date" on-focuschange="{getValue}"></gc-input> <gc-input name="enddate" on-focuschange="{error}" on-valuechange="{error}"></gc-input> </div> <div class="flex-container"> <div class="item"> <gc-inputlist name="testeroo" placeholder="test" list="{this.dummyData}" key="venue" multiselect="true"></gc-inputlist> </div> <div class="item"> <gc-input name="type" on-valuechange="{error}" placeholder="Product Type"></gc-input> </div> <div class="item"> <gc-input name="venue" on-valuechange="{updateName}" on-focuschange="{updateName}" placeholder="Venue"></gc-input> </div> <div class="item"> <gc-input name="title" placeholder="Product Title"></gc-input> </div> </div> <div class="button"> <gc-button name="button" type="submit" text="Search" on-buttonclick="{onSearchPmus}"></gc-button> </div> </div> <gc-modal name="mainModal" title="Test">Oh, hello there</gc-modal>', '', '', function(opts) {
 'use strict';
 
 var _this = this;
@@ -19,13 +19,15 @@ this.error = function (value, tag) {
 };
 
 this.onSearchPmus = function (e) {
-  console.log(e);
-  _this.tags.mainModal.update({
-    showModal: true
-  });
+  var test = _this.tags.testeroo.getVal.call();
+  if (test == 'show modal') {
+    _this.tags.mainModal.update({
+      showModal: true
+    });
+  }
 };
 });
-riot.tag2('demo-results', '<div class="search-results"> <ul> <gc-pmlist each="{pmu, li in this.line_items}" pmdata="{pmu}"></gc-pmlist> </ul> </div>', '', '', function(opts) {
+riot.tag2('demo-results', '<div class="search-results"> <ul> <gc-pmlist each="{pmu, li in this.line_items}" pmdata="{pmu}"></gc-pmlist> </ul> <ul> <gc-listview hideheader="true"><yield to="title">Test Title</yield><yield to="content">Test Content</yield> </ul> </div>', '', '', function(opts) {
 'use strict';
 
 var _this = this;
@@ -40,9 +42,10 @@ this.on('mount', function () {
   });
 });
 });
-riot.tag2('demo-search', '<gc-nav><li>test</li><li>test2</li><li><a href="#">link</a></li><li><gc-badge base="Shopping Cart" badge="42"></gc-badge></li> </gc-nav> <demo-form></demo-form> <div><gc-loader height="72" width="64" speed="1.2" type="circle"></gc-loader></div> <demo-results callback="{tagCallback}"></demo-results>', '', '', function(opts) {
+riot.tag2('demo-search', '<gc-nav><li>test</li><li>test2</li><li><a href="#">link</a></li><li><gc-badge base="Shopping Cart" badge="42"></gc-badge></li> </gc-nav> <demo-form></demo-form> <div><gc-loader height="172" width="164" speed=".9" type="bar"></gc-loader></div> <demo-results callback="{tagCallback}"></demo-results>', '', '', function(opts) {
 'use strict';
 
+//  riot.mixin('testObservable', new TestObservable());
 this.tagCallback = function (resultsTag) {
 
   var request = new XMLHttpRequest();
@@ -281,6 +284,19 @@ this.clicked = function (e) {
     _this.clearResults();
   } else if (e.toElement.classList.contains('tag')) {
     _this.deleteTag(e.toElement);
+  }
+};
+
+this.getVal = function () {
+  var tagArray = [];
+  document.querySelectorAll('.tags .tag').forEach(function (div) {
+    tagArray.push(div.innerText);
+  });
+
+  if (tagArray.length > 0) {
+    return tagArray;
+  } else {
+    return _this.tags.input.value;
   }
 };
 
