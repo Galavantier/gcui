@@ -1,0 +1,12 @@
+{
+  "name": "pricing-matrix-search-part-deux",
+  "version": "2.0.0",
+  "description": "A pricing matrix search application for Galavantier",
+  "main": "src/app.js",
+  "devDependencies": {
+    "babel-preset-es2015-riot": "^1.0.4"
+  },
+  "dependencies": {
+    "riot": "^2.3.18"
+  }
+}
