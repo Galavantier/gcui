@@ -5,7 +5,6 @@
     <div><gc-loader height="172" width="164" speed=".9" type="bar"></gc-loader></div>
     <demo-results callback={tagCallback}></demo-results>
   <script type="babel">
-  //  riot.mixin('testObservable', new TestObservable());
     this.tagCallback = (resultsTag) => {
       
       let request = new XMLHttpRequest();

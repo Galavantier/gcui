@@ -1,0 +1,70 @@
+// #uglyfonts
+@import url(http://fonts.googleapis.com/css?family=Oswald|Open+Sans);
+$oswald: 'Oswald', sans-serif;
+$open-sans: 'Open Sans', sans-serif;
+
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+
+@mixin flip($speed: 0.5s, $direction: "y") {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform $speed;
+  &.flip {
+    @if $direction == "x" {
+      transform: rotateX(180deg);
+    } 
+    @if $direction == "y" {
+      transform: rotateY(180deg);
+    } 
+    @if $direction == "z" {
+      transform: rotateZ(180deg);
+    } 
+    transition: transform $speed;
+  }
+  // TODO: Get rid of absolute
+  .face {
+    position: absolute;
+    top: 0px; left: 0px;
+    bottom: 0px; right: 0px;
+    backface-visibility: hidden;
+    transform: translateZ(0.1px);
+  }
+  .back {
+    @if $direction == "x" {
+      transform: rotateX(180deg);
+    } 
+    @if $direction == "y" {
+      transform: rotateY(180deg);
+    } 
+    @if $direction == "z" {
+      transform: rotateZ(180deg);
+    }   
+  }
+}
+
+$red: #FF0000;
+$gv-blue: #6783FA;
+$darker-blue: #5978FB;
+$gv-light-blue: #a7ddea;
+$gv-custard: #ffdea3;
+$eggshell: #f3efe7;
+$white: #FFF;
+$off-white: #EEE;
+$background-white: #F3F3F3;
+$light-grey: #999;
+$mid-grey: #555;
+$dark-grey: #333;
+$black: #000;

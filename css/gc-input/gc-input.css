@@ -21,7 +21,6 @@ gc-input {
     gc-input .input-content label {
       font-family: inherit;
       color: #333;
-      padding-left: 2.8%;
       text-align: center; }
     gc-input .input-content input {
       display: block;
@@ -35,8 +34,8 @@ gc-input {
       border-bottom: 1px solid rgba(103, 131, 250, 0.8);
       color: #6783FA;
       width: 95%;
-      padding: 10px 15px;
       margin: 0 auto 10px auto;
+      padding: 6px 0 6px 0;
       text-align: center;
       font-size: .9rem;
       -webkit-transition-duration: .2s;

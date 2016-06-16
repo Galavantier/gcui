@@ -4,9 +4,17 @@
   "description": "A pricing matrix search application for Galavantier",
   "main": "src/app.js",
   "devDependencies": {
+    "babel-core": "^6.3.17",
     "babel-preset-es2015-riot": "^1.0.4"
   },
   "dependencies": {
-    "riot": "^2.3.18"
+    "riot": "^2.3.18",
+    "riotify": "^1.0.1"
+  },
+  "babel": {
+    "presets": ["es2015-riot"],
+    "plugins": [
+      ["transform-es2015-modules-commonjs", { "allowTopLevelThis": true }]
+    ]
   }
 }

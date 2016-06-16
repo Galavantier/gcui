@@ -1,0 +1,118 @@
+@import "../variables.scss";
+
+.transition {
+  transition: all 0.25s ease-in-out;
+}
+
+.flipIn {
+  animation: flipdown 0.55s ease-in-out;
+}
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg) ;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+gc-listview { 
+  h2 {
+    &.hide {
+      display: none;
+    }
+  }
+  .content {
+    @extend .transition;
+    opacity: 1;
+    transform: translate(0, 0);
+    z-index: 2;
+    margin: 0;
+    padding: 4px;
+    background-color: $dark-grey;
+    color: $white;
+  }
+  li {
+    background-color: $white;
+    position: relative;
+    margin: 0;
+    margin-bottom: 5px;
+    @extend .flipIn;
+    width: 100%;
+    &.selected {
+      border: 2px solid $gv-blue;
+    }
+    i {
+      position: absolute;
+      transform: translate(-6px, 0);
+      margin-top: 5px;
+      right: 5;
+      &:before, &:after {
+        content: "";
+        @extend .transition;
+        position: absolute;
+        background-color: $gv-blue;
+        width: 3px;
+        height: 9px;
+      }
+      
+      &:before {
+       transform: translate(-2px, 0) rotate(45deg);
+      }
+      
+      &:after {
+        transform: translate(2px, 0) rotate(-45deg);
+      }
+    }
+    
+    input[type=checkbox] {
+      position: absolute;
+      cursor: pointer;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0;
+      
+      &:checked {
+        & ~ .content {
+          margin-top: 0px;
+          max-height: 0px;
+          opacity: 0;
+          transform: translate(0, 50%);
+        }
+        & ~ h2 {
+          display: initial;
+        }
+        & ~ i {
+          &:before {
+            transform: translate(2px, 0) rotate(45deg);
+          }
+          &:after {
+            transform: translate(-2px, 0) rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+}

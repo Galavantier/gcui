@@ -6,8 +6,9 @@ gc-nav {
   gc-nav header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    z-index: 10; }
+    z-index: 100; }
   gc-nav .navbar {
     position: relative;
     height: 48px;
@@ -22,12 +23,17 @@ gc-nav {
         list-style: none;
         display: inline-block;
         font-size: 1rem;
-        padding: 5px;
+        padding: 12px 5px 0 5px;
         transition: 0.5s ease;
         color: #333; }
         gc-nav .navbar .nav li a {
+          margin: 4px;
+          padding: 5px;
           text-decoration: none;
           color: inherit; }
+          gc-nav .navbar .nav li a:hover {
+            background-color: #6783FA;
+            border-radius: 4px; }
     gc-nav .navbar.scrolled {
       transition: 0.5s ease;
       height: 50px;

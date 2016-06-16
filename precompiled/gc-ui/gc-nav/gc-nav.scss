@@ -1,0 +1,64 @@
+@import "../variables.scss";
+$nav-height: 48px;
+
+gc-nav {
+  display: block;
+  margin-bottom: $nav-height;
+  font-family: $open-sans;
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  .navbar {
+    position: relative;
+    height: $nav-height;
+    width: 100%;
+    transition: 0.5s ease;
+    background-color: $white;
+    
+    .nav {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      
+      li {
+        list-style: none;
+        display: inline-block;
+        font-size: 1rem;
+        padding: 12px 5px 0 5px;
+        transition: 0.5s ease;
+        color: $dark-grey;
+      
+        a {
+          margin: 4px;
+          padding: 5px;
+          text-decoration: none;
+          color: inherit;
+
+          &:hover {
+            background-color: $gv-blue;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+    
+    &.scrolled {
+      transition: 0.5s ease;
+      height: 50px; 
+      background-color: rgba($dark-grey, 0.8);
+      border-bottom: solid 1px $white;
+      
+      .nav {
+        li {
+          transition: 0.5s ease;
+          color: $white;
+        }
+      }
+    }
+  }
+}

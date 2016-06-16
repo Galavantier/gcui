@@ -1,0 +1,60 @@
+@import "../variables.scss";
+
+gc-pmlist {
+  .header-info {
+     @include vendor-prefix(display, "flex");
+     @include vendor-prefix(flex-flow, "row nowrap");
+     align-content: center;
+  }
+  .content-info{
+    @include vendor-prefix(display, "flex");
+    @include vendor-prefix(flex-flow, "row wrap");
+  }
+  .label {
+    min-width: 50%;
+    text-align: left;
+  }
+  .value {
+    min-width: 50%;
+    text-align: left;
+  }
+  .label, .value {
+    font-family: $open-sans;
+    font-size: .8rem;
+    @include vendor-prefix(flex-grow, "1");
+  }
+  .subtext {
+      font-family: $open-sans;
+      font-size: 0.7rem;
+      color: $light-grey;
+  }
+  .header-item-pricing,
+  .header-item-photo,
+  .header-item-main,
+  .header-item-button {
+    align-items: center;
+    margin: auto;
+    padding: 0 5px;
+  }
+  .header-item-pricing {
+    @include vendor-prefix(flex-grow, "1");
+    min-width: 103px;
+  }
+  .header-item-button {
+    z-index: 2;
+  }
+  .header-item-photo {
+    @include vendor-prefix(flex-grow, "1");
+    img {
+      max-width: 90px;
+      height: 75px;
+    }
+  }
+  .header-item-main {
+    @include vendor-prefix(flex-grow, "3");
+    .title {
+      font-family: $open-sans;
+      font-size: 0.9rem;
+    }
+  }
+}

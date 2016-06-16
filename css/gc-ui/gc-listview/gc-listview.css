@@ -1,0 +1,80 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald|Open+Sans);
+.transition, gc-listview .content, gc-listview li i:before, gc-listview li i:after {
+  transition: all 0.25s ease-in-out; }
+
+.flipIn, gc-listview li {
+  animation: flipdown 0.55s ease-in-out; }
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg); }
+  5% {
+    opacity: 1; }
+  80% {
+    transform: rotateX(8deg); }
+  83% {
+    transform: rotateX(6deg); }
+  92% {
+    transform: rotateX(-3deg); }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg); } }
+ul {
+  list-style: none; }
+
+gc-listview h2.hide {
+  display: none; }
+gc-listview .content {
+  opacity: 1;
+  transform: translate(0, 0);
+  z-index: 2;
+  margin: 0;
+  padding: 4px;
+  background-color: #333;
+  color: #FFF; }
+gc-listview li {
+  background-color: #FFF;
+  position: relative;
+  margin: 0;
+  margin-bottom: 5px;
+  width: 100%; }
+  gc-listview li.selected {
+    border: 2px solid #6783FA; }
+  gc-listview li i {
+    position: absolute;
+    transform: translate(-6px, 0);
+    margin-top: 5px;
+    right: 5; }
+    gc-listview li i:before, gc-listview li i:after {
+      content: "";
+      position: absolute;
+      background-color: #6783FA;
+      width: 3px;
+      height: 9px; }
+    gc-listview li i:before {
+      transform: translate(-2px, 0) rotate(45deg); }
+    gc-listview li i:after {
+      transform: translate(2px, 0) rotate(-45deg); }
+  gc-listview li input[type=checkbox] {
+    position: absolute;
+    cursor: pointer;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0; }
+    gc-listview li input[type=checkbox]:checked ~ .content {
+      margin-top: 0px;
+      max-height: 0px;
+      opacity: 0;
+      transform: translate(0, 50%); }
+    gc-listview li input[type=checkbox]:checked ~ h2 {
+      display: initial; }
+    gc-listview li input[type=checkbox]:checked ~ i:before {
+      transform: translate(2px, 0) rotate(45deg); }
+    gc-listview li input[type=checkbox]:checked ~ i:after {
+      transform: translate(-2px, 0) rotate(-45deg); }
+
+/*# sourceMappingURL=gc-listview.css.map */

@@ -1,0 +1,47 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald|Open+Sans);
+gc-inputlist .tags {
+  margin: 1px 1px; }
+gc-inputlist .tags .tag {
+  margin-top: 2px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  color: #FFF;
+  background-color: rgba(103, 131, 250, 0.8);
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-right: 2px;
+  cursor: pointer;
+  z-index: 4;
+  display: inline-block; }
+gc-inputlist .tags .tag.highlight {
+  background-color: rgba(255, 0, 0, 0.8); }
+gc-inputlist .tags:after {
+  content: "";
+  clear: both;
+  display: table; }
+gc-inputlist .term-list {
+  list-style: none inside;
+  width: 80%;
+  margin: 0 auto 2em;
+  text-align: left;
+  color: #333;
+  background: #FFF;
+  border: 1px solid #ddd;
+  font-weight: 400;
+  padding-left: 0px; }
+gc-inputlist .term-list li {
+  padding: 0.5em;
+  border-bottom: 1px solid #eee;
+  list-style: none inside;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.7rem;
+  cursor: pointer; }
+  gc-inputlist .term-list li:hover {
+    background-color: rgba(0, 0, 0, 0.1); }
+gc-inputlist .term-list strong {
+  color: #444;
+  font-weight: 700; }
+gc-inputlist .hidden {
+  display: none; }
+
+/*# sourceMappingURL=gc-inputlist.css.map */

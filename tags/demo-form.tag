@@ -42,7 +42,7 @@
     
     this.getValue = (value) => {
       console.log(value);
-    }
+    } 
 
     this.error = (value, tag) => {
       if (value) {

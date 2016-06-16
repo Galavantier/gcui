@@ -1,4 +1,4 @@
-riot.tag2('demo-form', '<div class="form-container"> <div class="dates"> <gc-input name="startdate" placeholder="Start Date" pikaday="true" label="Start Date" on-focuschange="{getValue}"></gc-input> <gc-input name="enddate" on-focuschange="{error}" on-valuechange="{error}"></gc-input> </div> <div class="flex-container"> <div class="item"> <gc-inputlist name="testeroo" placeholder="test" list="{this.dummyData}" key="venue" multiselect="true"></gc-inputlist> </div> <div class="item"> <gc-input name="type" on-valuechange="{error}" placeholder="Product Type"></gc-input> </div> <div class="item"> <gc-input name="venue" on-valuechange="{updateName}" on-focuschange="{updateName}" placeholder="Venue"></gc-input> </div> <div class="item"> <gc-input name="title" placeholder="Product Title"></gc-input> </div> </div> <div class="button"> <gc-button name="button" type="submit" text="Search" on-buttonclick="{onSearchPmus}"></gc-button> </div> </div> <gc-modal name="mainModal" title="Test">Oh, hello there</gc-modal>', '', '', function(opts) {
+riot.tag2('demo-form', '<div class="form-container"> <div class="dates"> <gc-input name="startdate" placeholder="Start Date" pikaday="true" label="Start Date" on-focuschange="{getValue}"></gc-input> <gc-input name="enddate" placeholder="Start Date" pikaday="true" label="End Date" on-focuschange="{getValue}"></gc-input> </div> <div class="flex-container"> <div class="item"> <gc-inputlist name="testeroo" placeholder="test" list="{this.dummyData}" key="venue" multiselect="true"></gc-inputlist> </div> <div class="item"> <gc-input name="type" on-valuechange="{error}" placeholder="Product Type"></gc-input> </div> <div class="item"> <gc-input name="venue" on-valuechange="{updateName}" on-focuschange="{updateName}" placeholder="Event"></gc-input> </div> <div class="item"> <gc-input name="title" placeholder="Product Title"></gc-input> </div> </div> <div class="button"> <gc-button name="button" type="submit" text="Search" on-buttonclick="{onSearchPmus}"></gc-button> </div> </div> <gc-modal name="mainModal" title="Test">Oh, hello there</gc-modal>', '', '', function(opts) {
 'use strict';
 
 var _this = this;
@@ -11,11 +11,11 @@ this.getValue = function (value) {
 };
 
 this.error = function (value, tag) {
-  if (value) {
-    tag.error = 'Sorry, I don\'t do anything.';
-  } else {
-    tag.error = null;
-  }
+  //- if (value) {
+  //-   tag.error = 'Sorry, I don\'t do anything.';
+  //- } else {
+  //-   tag.error = null;
+  //- }
 };
 
 this.onSearchPmus = function (e) {
@@ -27,7 +27,7 @@ this.onSearchPmus = function (e) {
   }
 };
 });
-riot.tag2('demo-results', '<div class="search-results"> <ul> <gc-pmlist each="{pmu, li in this.line_items}" pmdata="{pmu}"></gc-pmlist> </ul> <ul> <gc-listview hideheader="true"><yield to="title">Test Title</yield><yield to="content">Test Content</yield> </ul> </div>', '', '', function(opts) {
+riot.tag2('demo-results', '<div class="search-results"> <ul> <gc-pmlist each="{pmu, li in this.line_items}" pmdata="{pmu}"></gc-pmlist> </ul> </div>', '', '', function(opts) {
 'use strict';
 
 var _this = this;
@@ -42,10 +42,9 @@ this.on('mount', function () {
   });
 });
 });
-riot.tag2('demo-search', '<gc-nav><li>test</li><li>test2</li><li><a href="#">link</a></li><li><gc-badge base="Shopping Cart" badge="42"></gc-badge></li> </gc-nav> <demo-form></demo-form> <div><gc-loader height="172" width="164" speed=".9" type="bar"></gc-loader></div> <demo-results callback="{tagCallback}"></demo-results>', '', '', function(opts) {
+riot.tag2('demo-search', '<gc-nav name="navbar"> <li><gc-badge base="Revew Your Quote" badge="1"></gc-badge></li> <li><a href="/user/logout">Logout</a></li> </gc-nav> </gc-nav> <demo-form></demo-form> <demo-results callback="{tagCallback}"></demo-results>', '', '', function(opts) {
 'use strict';
 
-//  riot.mixin('testObservable', new TestObservable());
 this.tagCallback = function (resultsTag) {
 
   var request = new XMLHttpRequest();
@@ -178,13 +177,14 @@ this.focusChanged = function (e) {
   }
 };
 });
-riot.tag2('gc-inputlist', '<div if="{multiselect}" class="tags" name="region"> </div> <gc-input placeholder="{opts.placeholder}" name="input" on-valuechange="{updateList}"></gc-input> <ul id="search-results" class="list hidden"></ul>', '', '', function(opts) {
+riot.tag2('gc-inputlist', '<div if="{multiselect}" class="tags" name="region"> </div> <gc-input label="{opts.label}" placeholder="{opts.placeholder}" name="input" on-valuechange="{updateList}"></gc-input> <ul name="searchresults" class="list hidden"></ul>', '', '', function(opts) {
 'use strict';
 
 var _this = this;
 
 // Make sure there's a list to be used
 this.on('before-mount', function () {
+  _this.name = opts.name || 'gc-inputlist';
   if (!opts.list) {
     console.error('opts.list not found. Check your opts or use gc-input instead.');
     _this.unmount(true);
@@ -205,9 +205,10 @@ this.on('before-mount', function () {
 
 this.on('mount', function () {
   // Add Listeners
-  _this.ul = document.getElementById('search-results');
+  _this.ul = _this.searchresults;
   _this.ul.addEventListener('click', _this.clicked);
   _this.region.addEventListener('click', _this.clicked);
+  _this.input.addEventListener('click', _this.clicked);
   // Make a searchable list
   if (typeof opts.list[0] === 'string') {
     _this.searchableList = opts.list;
@@ -219,9 +220,11 @@ this.on('mount', function () {
   // Make the list unique.
   _this.searchableList = Array.from(new Set(_this.searchableList));
   // Update default value of input
-  _this.tags.input.update({
-    value: _this.searchableList[parseInt(opts.defaultvalue) || 0]
-  });
+  if (opts.autoupdate != false) {
+    _this.tags.input.update({
+      value: _this.searchableList[parseInt(opts.defaultvalue) || 0]
+    });
+  }
   // Set Width -- this should definitely get changed later
   _this.region.style.width = _this.input.firstChild.clientWidth;
 });
@@ -249,11 +252,9 @@ this.updateList = function (value, tag, keyCode) {
     } else {
       _this.clearResults();
     }
-
-    // @TODO placeholder?
   } else {
-      _this.clearResults();
-    }
+    _this.clearResults();
+  }
 };
 
 this.clearResults = function () {
@@ -264,10 +265,10 @@ this.clearResults = function () {
 // @TODO make rgxTerm match case with original
 this.updateView = function (searchTerm, results) {
   _this.clearResults();
-  for (var i = 0; i < results.length && i < (!isNaN(parseInt(opts.listlimit)) ? parseInt(opts.listlimit) : 5); i++) {
+  for (var i = 0; i < results.length && i < (!isNaN(parseInt(opts.listlimit)) ? parseInt(opts.listlimit) : 100); i++) {
     var li = document.createElement('li'),
         rgxTerm = new RegExp(searchTerm, 'i'),
-        result = results[i].replace(rgxTerm, '<strong>' + searchTerm + '</strong>');
+        result = results[i].replace(searchTerm, '<strong>' + searchTerm + '</strong>');
     li.innerHTML = result;
     _this.ul.appendChild(li);
     if (_this.ul.className !== "term-list") {
@@ -276,15 +277,23 @@ this.updateView = function (searchTerm, results) {
   }
 };
 
-// LI element clicked
 this.clicked = function (e) {
+  // List was clicked
   if (e.target.tagName === 'LI') {
     _this.tags.input.update({ value: e.target.innerText });
     _this.input.querySelector('input').focus();
+    // Let parent know something was clicked
+    if (typeof opts.onListclick === 'function') {
+      opts.onListclick(_this.getVal(), _this);
+    }
+
     _this.clearResults();
+    // Tag was clicked
   } else if (e.toElement.classList.contains('tag')) {
-    _this.deleteTag(e.toElement);
-  }
+      _this.deleteTag(e.toElement);
+    } else {
+      _this.tags.input.value.length < 1 ? _this.updateView('', _this.searchableList) : _this.updateList(_this.tags.input.value);
+    }
 };
 
 this.getVal = function () {
@@ -404,7 +413,7 @@ this.scrolled = function (e) {
   }
 };
 });
-riot.tag2('gc-pmlist', '<gc-listview name="list" hideheader="false"> <yield to="title"> <div class="header-info"> <div class="header-item-pricing"> <div class="price"> {cost} </div> <div class="subtext"> *estimated total </div> </div> <div class="header-item-photo"> <img src="https://www.galavantier.com/sites/default/files/styles/venue_slider_image/public/XS-Nightclub-Las-Vegas-1.jpg"> </div> <div class="header-item-main"> <div class="title"> Dance Floor Table for {capacity}<br> XS Nightclub </div> <div class="subtext"> May 26, 2016 at 10:00pm </div> </div> <div class="header-item-button"> <gc-button name="addbutton" type="submit" text="+" on-buttonclick="{parent.addToCart}"></gc-button> </div> </div> </yield> <yield to="content"> <div class="content-info" each="{pmuList}"> <div class="label"> {label} </div> <div class="value"> {value} </div> </div> <yield> </gc-listview>', '', '', function(opts) {
+riot.tag2('gc-pmlist', '<gc-listview name="list" hideheader="false"> <yield to="title"> <div class="header-info"> <div class="header-item-pricing"> <div class="price"> {cost} </div> <div class="subtext"> *estimated total </div> </div> <div class="header-item-photo"> <img src="https://www.galavantier.com/sites/default/files/styles/venue_slider_image/public/XS-Nightclub-Las-Vegas-1.jpg"> </div> <div class="header-item-main"> <div class="title"> Dance Floor Table for {capacity}<br> XS Nightclub </div> <div class="subtext"> June 16, 2016 at 10:00pm </div> </div> <div class="header-item-button"> <gc-button name="addbutton" type="submit" text="+" on-buttonclick="{parent.addToCart}"></gc-button> </div> </div> </yield> <yield to="content"> <div class="content-info" each="{pmuList}"> <div class="label"> {label} </div> <div class="value"> {value} </div> </div> <yield> </gc-listview>', '', '', function(opts) {
 'use strict';
 
 var _this = this;
@@ -466,18 +475,5 @@ this.on('mount', function () {
     capacity: _this.capacity,
     pmuList: _this.pmuList
   });
-});
-});
-riot.tag2('results-list', '<h1>Results</h1> <ul> <li each="{p in opts.people}">{p.first} {p.last}</li> </ul>', '', '', function(opts) {
-'use strict';
-
-this.on('mount', function () {
-  console.log('event fired');
-  opts.callback(this);
-});
-
-this.on('data_loaded', function (peeps) {
-  opts.people = peeps;
-  this.update();
 });
 });
